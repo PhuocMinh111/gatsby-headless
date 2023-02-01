@@ -1,8 +1,13 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
+import Header from "../components/header";
 
 const IndexPage = () => {
-  return <h1 className="text-bold text-red-500">hello</h1>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 export default IndexPage;
 

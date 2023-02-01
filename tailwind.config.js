@@ -9,6 +9,10 @@ module.exports = {
       colors: {
         orange: "#FF8049",
         black: "#383F50",
+        light: "#FFFFFF",
+      },
+      maxWidth: {
+        mdFull: "1580px",
       },
     },
   },
