@@ -3,14 +3,10 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { ImSun } from "react-icons/im";
 import { RiMoonClearLine } from "react-icons/ri";
+import { UseContext } from "../context/context";
 
-function LightMode({
-  lightMode,
-  toggleLightMode,
-}: {
-  lightMode: boolean;
-  toggleLightMode: () => void;
-}) {
+function LightMode() {
+  const { lightMode, toggleLightMode } = UseContext();
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
       <motion.div
