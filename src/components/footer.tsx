@@ -7,12 +7,13 @@ import { ImFacebook, ImInstagram, ImTwitter } from "react-icons/im";
 const contents = [
   { title: "Location", content: ["America", "asia", "Europe", "Afica"] },
   { title: "Contact", content: ["About Me", "Teams", "profiles", "FAQ"] },
-  { title: "Legals", content: ["Privacy", "Disclaimer", "Terms", "Company"] },
+  { title: "Legals", content: ["Privacy", "Disclaimer", "Terms", "Company"] }
 ];
 
 function Footer() {
   return (
-    <div className="w-full flex flex-col sm:flex-row">
+    <div className="w-full py-5 flex flex-col sm:flex-row sm:justify-around">
+      {/* sm block */}
       <div className="flex flex-col sm:hidden py-3 gap-2">
         {contents.map(({ title, content }, index) => {
           return (
@@ -24,7 +25,9 @@ function Footer() {
           );
         })}
       </div>
-      <div className="logo flex flex-col gap-2 py-3 px-3 sm:px-5">
+      {/*  */}
+      {/* contact */}
+      <div className="logo max-w-[300px] flex flex-col gap-2 py-3 px-3 sm:px-5">
         <Logo logo={{ bg: "black", text: "white" }} text={"black"} />
         <div className="mt-3 leading-[36px] text-[18px] font-thin">
           2021 Award winning Finance Advisor and Lorem ipsum dolor sit amet
@@ -41,6 +44,27 @@ function Footer() {
           </div>
         </div>
       </div>
+      {/* md block */}
+
+      {contents.map(({ title, content }, index) => {
+        return (
+          <div className="hidden mt-3 sm:flex flex-col">
+            <h2 className="text-black text-[20px] font-[500]">{title}</h2>
+            <div className="flex mt-5 flex-col gap-3">
+              {content.map((ele, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="text-[16px] cursor-pointer font-thin"
+                  >
+                    {ele}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

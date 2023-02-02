@@ -11,7 +11,8 @@ module.exports = withMT({
       colors: {
         orange: "#FF8049",
         black: "#383F50",
-        light: "#FFFFFF"
+        light: "#FFFFFF",
+        grey: "#E5E5E5"
       },
       leading: {
         lg: "36px"

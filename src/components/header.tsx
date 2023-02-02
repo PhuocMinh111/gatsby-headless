@@ -49,7 +49,7 @@ const AnimatedMenu = () => {
       exit="exit"
       transition={{ duration: 0.5, type: "easeOut" }}
       variants={variant}
-      className="sm:hidden flex flex-col gap-3 w-1/2 
+      className="sm:hidden flex flex-col gap-3 w-1/2 z-10
     bg-light border-dark py-3 px-3 dark:text-secondLight
     dark:bg-dark
     items-start absolute top-[100px] right-[5px]"
