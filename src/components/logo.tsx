@@ -4,7 +4,7 @@ import { theme } from "../theme/theme";
 
 function Logo({
   logo,
-  text = "light",
+  text = "light"
 }: {
   logo?: { bg: string; text: string };
   text?: string;
@@ -15,7 +15,7 @@ function Logo({
         style={
           logo ? { backgroundColor: logo.bg, color: logo.text } : undefined
         }
-        className={`w-[67px] inline-flex font-[700] items-center justify-center h-[67px]  rounded-full bg-orange text-light`}
+        className={`w-[53px] inline-flex font-[700] text-[32px] items-center justify-center h-[53px]  rounded-full bg-orange text-light`}
       >
         K
       </div>

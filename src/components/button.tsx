@@ -1,18 +1,23 @@
-import React, { ReactElement, ReactNode } from "react";
+import React, {
+  CSSProperties,
+  ReactElement,
+  ReactNode,
+  StyleHTMLAttributes
+} from "react";
 
-interface IProp {
-  bg?: string;
-  textColor?: string;
+function Button({
+  style = {},
+  content,
+  logo
+}: {
+  style?: CSSProperties;
   content?: string;
   logo?: ReactNode;
-  style?: string;
-}
-
-function Button({ bg = "#383F50", textColor, content, logo, style }: IProp) {
+}) {
   return (
     <div
-      style={{ color: textColor, backgroundColor: bg }}
-      className={` hover:underline bg-black text-gray-200 ${style} `}
+      style={style}
+      className={` flex items-center justify-center hover:underline bg-black text-gray-200 ${style} `}
     >
       {content}
       {logo}

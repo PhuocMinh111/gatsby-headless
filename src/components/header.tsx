@@ -40,7 +40,7 @@ const AnimatedMenu = () => {
   const variant = {
     hidden: { opacity: 0, x: 0, y: -20 },
     enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -20 },
+    exit: { opacity: 0, x: 0, y: -20 }
   };
   return (
     <motion.div
@@ -50,18 +50,16 @@ const AnimatedMenu = () => {
       transition={{ duration: 0.5, type: "easeOut" }}
       variants={variant}
       className="sm:hidden flex flex-col gap-3 w-1/2 
-    bg-slate-50 border-dark py-3 px-3 dark:text-secondLight
+    bg-light border-dark py-3 px-3 dark:text-secondLight
     dark:bg-dark
     items-start absolute top-[100px] right-[5px]"
     >
       <Button
-        bg={theme.colors.light}
-        textColor={theme.colors.black}
+        style={{ backgroundColor: "light", color: "black" }}
         content="Calculator"
       ></Button>
       <Button
-        bg={theme.colors.light}
-        textColor={theme.colors.black}
+        style={{ backgroundColor: "light", color: "black" }}
         content="Service"
       ></Button>
     </motion.div>

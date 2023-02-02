@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   Accordion,
   AccordionHeader,
-  AccordionBody,
+  AccordionBody
 } from "@material-tailwind/react";
 import Button from "./button";
 import { theme } from "../theme/theme";
@@ -45,8 +45,7 @@ function AccordionComp({ title, content }: IAccodion) {
         {content.map((ele, index) => {
           return (
             <Button
-              bg={theme.colors.light}
-              textColor={theme.colors.black}
+              style={{ background: "white", color: "black" }}
               key={index}
               content={ele}
             ></Button>
