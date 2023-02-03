@@ -5,3 +5,4 @@ export const PURCHASE_PRICE: string = "PURCHASE_PRICE";
 export const DOWN_PAYMENT: string = "DOWN_PAYMENT";
 export const REPAY_TIME: string = "REPAY_TIME";
 export const INTEREST: string = "INTEREST";
+export const APP_STATE: string = "APP_STATE";

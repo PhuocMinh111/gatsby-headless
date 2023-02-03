@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Button from "./button";
 import { theme } from "../theme/theme";
 import SliderComp from "./slider";
+import { motion } from "framer-motion";
 import {
   DOWN_PAYMENT,
   INTEREST,
@@ -11,14 +12,26 @@ import {
 import { UseContext } from "../context/context";
 
 const Calculator = () => {
-  const { loanAmount, purchasePrice, repayPerMonth } = UseContext();
+  const {
+    loanAmount,
+    downPayMent,
+    repayTime,
+    interest,
+    purchasePrice,
+    repayPerMonth
+  } = UseContext();
   return (
     <div
       id="calculator"
-      className="flex flex-col gap-5 sm:gap-8 sm:flex-row-reverse w-100 mt-5 px-3 sm:px-5 py-5 sm:pb-20"
+      className="flex overflow-hidden flex-col gap-5 sm:gap-8 sm:flex-row-reverse w-100 mt-5 px-3 sm:px-5 py-5 sm:pb-20"
     >
       {/* intro */}
-      <div className="flex flex-col sm:w-1/2 py-3 text-left">
+      <motion.div
+        initial={{ opacity: 0, x: 60 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col sm:w-1/2 py-3 text-left"
+      >
         <div className="text-[55px] max-w-[500px] font-[800] leading-[80px] ">
           Try our awesome Calculator
         </div>
@@ -35,11 +48,16 @@ const Calculator = () => {
           }}
           content="register"
         ></Button>
-      </div>
+      </motion.div>
 
       {/* calculator */}
 
-      <div className="flex flex-col px-5 sm:w-1/2 bg-black py-5 text-light">
+      <motion.div
+        initial={{ opacity: 0, x: 0, y: 60 }}
+        whileInView={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="flex flex-col px-5 sm:w-1/2 bg-black py-5 text-light"
+      >
         <div className="text-[50px] font-[800] leading-[70px] text-light">
           Mortgage Calculator
         </div>
@@ -54,6 +72,7 @@ const Calculator = () => {
             max={3000000}
             step={500}
             name={PURCHASE_PRICE}
+            initial={purchasePrice}
             title="Purchase Price"
           />
           {/* down payment */}
@@ -62,22 +81,25 @@ const Calculator = () => {
             min={1000}
             max={2000000}
             step={500}
+            initial={downPayMent}
             title="Down Payment"
           />
           {/* repay time */}
           <SliderComp
             name={REPAY_TIME}
             min={1}
-            max={100}
+            max={50}
             step={1}
+            initial={repayTime}
             title="Repayment time"
           />
           {/* interest */}
           <SliderComp
             step={0.1}
             min={0}
-            max={50}
+            max={20}
             name={INTEREST}
+            initial={interest}
             title="Interest Rate"
           />
         </div>
@@ -102,7 +124,7 @@ const Calculator = () => {
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

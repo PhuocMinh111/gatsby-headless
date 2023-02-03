@@ -9,7 +9,7 @@ function Layout({ children }: { children: ReactNode | ReactElement }) {
   return (
     <AppProvider>
       <ThemeProvider>
-        <AnimatePresence exitBeforeEnter initial={false}>
+        <AnimatePresence>
           <Header />
           {children}
           <Footer />

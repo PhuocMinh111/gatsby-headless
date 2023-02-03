@@ -4,5 +4,5 @@
 @tailwind utilities;
 
 body {
-  @apply tracking-wide;
+  @apply tracking-wide overflow-x-hidden;
 }

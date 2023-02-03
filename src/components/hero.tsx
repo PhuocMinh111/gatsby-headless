@@ -26,26 +26,36 @@ function Hero() {
   const { desc, images, name, tittle } = data.allContentfulHero.nodes[0];
 
   return (
-    <div className="w-full bg-dark py-5 sm:pt-5 sm:pb-0 bg-black flex flex-col mt-0 sm:flex-row-reverse ">
+    <div className="w-full overflow-hidden bg-dark py-5 sm:pt-5 sm:pb-0 bg-black flex flex-col mt-0 sm:flex-row-reverse ">
       {/* banner */}
-      {/* <AnimationWrapper> */}
-      <div className="relative h-[400px] sm:mt-0 overflow-hidden sm:h-[580px]  w-full sm:w-1/2 ">
+
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative h-[400px] sm:mt-0 overflow-hidden sm:h-[580px]  w-full sm:w-1/2 "
+      >
         {images &&
           images.map(({ url }: any, index: number) => {
             return (
               <img
                 src={url}
                 className={`absolute object-contain top-0 left-0 w-full h-full
-                  ${index === 0 ? "top-[150px] left-[50px]" : ""}`}
+                ${index === 0 ? "top-[150px] left-[50px]" : ""}`}
                 key={index}
                 alt="banner-img"
               />
             );
           })}
-      </div>
-      {/* </AnimationWrapper> */}
+      </motion.div>
+
       {/* prompt */}
-      <div className="flex sm:px-10 mt-5 sm:max-w-half w-full sm:mt-20  px-5 bg-dark flex-col">
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex sm:px-10 mt-5 sm:max-w-half w-full sm:mt-20  px-5 bg-dark flex-col"
+      >
         <div className="div sm:max-w-[80%] text-[50px] font-[800] leading-[70px] text-light">
           {tittle}
         </div>
@@ -63,7 +73,7 @@ function Hero() {
           }}
           content="learn more"
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import {
+  APP_STATE,
   DOWN_PAYMENT,
   INTEREST,
   PURCHASE_PRICE,
@@ -20,10 +21,15 @@ export interface AppState {
   loanAmount: number;
   repayPerMonth: number;
   toggleLightMode: () => void;
-  setValue: (name: string, value: number) => void;
+  setValue: (name: string, value: number | null | undefined) => void;
   calCulatePrice: (name: string, amount: number) => void;
 }
 //
+// persist return
+
+const setItem = (state: AppState) => {
+  localStorage.setItem(APP_STATE, JSON.stringify(state));
+};
 
 const reducer = (
   state: AppState,
@@ -36,15 +42,17 @@ const reducer = (
     //
     case SET_VALUE:
       const { name, value } = action.payload;
-      const temp = stateHandler(state, name, value);
+      let temp = stateHandler(state, name, value);
 
       if (temp.purchasePrice < temp.downPayMent) {
-        return {
+        temp = {
           ...temp,
           downPayMent: 0,
           error: true,
           errorMsg: "you can't set purchase price larger than down payment"
         };
+        setItem(temp);
+        return { ...temp };
       } else if (temp.purchasePrice > temp.downPayMent) {
         temp.loanAmount = temp.purchasePrice - temp.downPayMent;
         const { loanAmount: P, interest: R, repayTime: y } = temp;
@@ -54,10 +62,16 @@ const reducer = (
         const M = P * (r * (Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1)));
 
         temp.repayPerMonth = M < 1000000 ? parseFloat(M.toFixed(3)) : 0;
-        return { ...temp, error: false, errorMsg: "" };
+
+        temp = { ...temp, error: false, errorMsg: "" };
+        setItem(temp);
+        return { ...temp };
       }
+      setItem(temp);
       return { ...temp };
+
     default:
+      setItem(state);
       return { ...state };
   }
 };

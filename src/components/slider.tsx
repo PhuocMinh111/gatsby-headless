@@ -17,6 +17,7 @@ interface IProps {
   min?: number;
   max?: number;
   name: string;
+  initial?: number | undefined;
 }
 
 //default props
@@ -26,12 +27,13 @@ const base: IProps = {
   step: 100,
   min: 0,
   max: 1000,
-  name: ""
+  name: "",
+  initial: 0
 };
 
 function SliderComp({ ...props }: IProps) {
   const { error, errorMsg, setValue, loanAmount } = UseContext();
-  const [value, setValueState] = useState<number>(0);
+  const [value, setValueState] = useState<number | undefined>(0);
   const [errMsg, setMsg] = useState("");
   //exceed down payment
 
@@ -40,6 +42,7 @@ function SliderComp({ ...props }: IProps) {
     setValue(props.name, value);
   }
   useEffect(() => {
+    setValueState(props.initial);
     if (error && props.name === DOWN_PAYMENT) {
       setMsg("you cant set down payment larger than purchase price");
 
@@ -50,7 +53,7 @@ function SliderComp({ ...props }: IProps) {
         setMsg("");
       }, 1000);
     }
-  }, [error]);
+  }, [error, props.initial]);
   return (
     <Wrapper className="flex min-w-[250px] flex-col">
       <div className="div mt-3 text-[18px] font-[700]">

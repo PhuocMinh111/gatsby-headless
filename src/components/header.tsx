@@ -3,6 +3,7 @@ import Button from "./button";
 import { BsGithub } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 import { BiMenu } from "react-icons/bi";
+import { AiOutlineClose } from "react-icons/ai";
 import { theme } from "../theme/theme";
 import Logo from "./logo";
 
@@ -24,9 +25,16 @@ function Header() {
         {/*Sm toggle button */}
         <div
           onClick={() => setOpenMenu(!openMenu)}
-          className="flex sm:hidden text-xl"
+          className="flex sm:hidden  text-xl"
         >
-          <BiMenu />
+          <motion.div
+            animate={{ opacity: 1, rotate: 0 }}
+            initial={{ opacity: 0, rotate: 45 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {!openMenu ? <BiMenu /> : <AiOutlineClose />}
+          </motion.div>
         </div>
         {openMenu && <AnimatedMenu />}
         {/*  */}
@@ -39,30 +47,29 @@ function Header() {
 
 const AnimatedMenu = () => {
   const variant = {
-    hidden: { opacity: 0, x: 0, y: -20 },
+    hidden: { opacity: 0, x: 0, y: -30 },
     enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -20 }
+    exit: { opacity: 0, x: 0, y: -30 }
   };
   return (
     <motion.div
       initial="hidden"
       animate="enter"
-      exit="exit"
-      transition={{ duration: 0.5, type: "easeOut" }}
+      transition={{ duration: 0.5 }}
       variants={variant}
       className="sm:hidden flex flex-col gap-3 w-1/2 z-10
     bg-light border-dark py-3 px-3 dark:text-secondLight
     dark:bg-dark
-    items-start absolute top-[100px] right-[5px]"
+    items-start absolute top-[70px] right-[5px]"
     >
       <Button
         scrollTo="calculator"
-        style={{ backgroundColor: "light", color: "black" }}
+        style={{ backgroundColor: "white", color: "black" }}
         content="Calculator"
       ></Button>
       <Button
         scrollTo="info"
-        style={{ backgroundColor: "light", color: "black" }}
+        style={{ backgroundColor: "white", color: "black" }}
         content="Service"
       ></Button>
     </motion.div>
