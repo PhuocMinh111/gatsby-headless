@@ -18,7 +18,7 @@ import reducer from "./reducer";
 
 export const initializer = (initial: AppState, query: string) => {
   if (typeof window !== undefined) {
-    const appStateJSON = localStorage.getItem(query);
+    const appStateJSON = window.localStorage.getItem(query);
     return appStateJSON ? JSON.parse(appStateJSON) : initial;
   } else {
     return initial;

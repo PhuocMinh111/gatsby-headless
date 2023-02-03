@@ -28,7 +28,7 @@ export interface AppState {
 
 const setItem = (state: AppState) => {
   if (typeof window !== undefined) {
-    localStorage.setItem(APP_STATE, JSON.stringify(state));
+    window.localStorage.setItem(APP_STATE, JSON.stringify(state));
   }
   return;
 };
