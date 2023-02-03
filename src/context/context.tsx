@@ -15,9 +15,10 @@ import {
 import reducer from "./reducer";
 
 //persist app state
+const isBrowser = typeof window !== "undefined";
 
 export const initializer = (initial: AppState, query: string) => {
-  if (typeof window !== undefined) {
+  if (isBrowser) {
     const appStateJSON = window.localStorage.getItem(query);
     return appStateJSON ? JSON.parse(appStateJSON) : initial;
   } else {

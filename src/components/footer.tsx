@@ -48,7 +48,7 @@ function Footer() {
 
       {contents.map(({ title, content }, index) => {
         return (
-          <div className="hidden mt-3 sm:flex flex-col">
+          <div key={index} className="hidden mt-3 sm:flex flex-col">
             <h2 className="text-black text-[20px] font-[500]">{title}</h2>
             <div className="flex mt-5 flex-col gap-3">
               {content.map((ele, index) => {
