@@ -6,12 +6,13 @@ import Layout from "../layout/layout";
 import Hero from "../components/hero";
 import Info from "../components/info";
 import SliderComp from "../components/slider";
+import Calculator from "../components/calculator";
 const IndexPage = () => {
   return (
     <Layout>
       <Hero />
       <Info />
-      <SliderComp />
+      <Calculator />
     </Layout>
   );
 };
