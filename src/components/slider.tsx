@@ -34,6 +34,7 @@ const base: IProps = {
 function SliderComp({ ...props }: IProps) {
   const { error, errorMsg, setValue, loanAmount } = UseContext();
   const [value, setValueState] = useState<number | undefined>(0);
+  const [guard, setGuard] = useState(true);
   const [errMsg, setMsg] = useState("");
   //exceed down payment
 
@@ -41,19 +42,8 @@ function SliderComp({ ...props }: IProps) {
     setValueState(e.target.value);
     setValue(props.name, value);
   }
-  useEffect(() => {
-    setValueState(props.initial);
-    if (error && props.name === DOWN_PAYMENT) {
-      setMsg("you cant set down payment larger than purchase price");
+  useEffect(() => {}, []);
 
-      setValueState(0);
-      setValue(DOWN_PAYMENT, value);
-    } else {
-      setTimeout(() => {
-        setMsg("");
-      }, 1000);
-    }
-  }, [error, props.initial]);
   return (
     <Wrapper className="flex min-w-[250px] flex-col">
       <div className="div mt-3 text-[18px] font-[700]">
@@ -66,13 +56,13 @@ function SliderComp({ ...props }: IProps) {
           }`}
       </div>
       <Slider
-        value={error && props.name === DOWN_PAYMENT ? 0 : value}
+        value={value}
         min={props.min}
         step={props.step}
         max={props.max}
         onChange={onChange}
       ></Slider>
-      <div className="text-red-500 text-[10px]"></div>
+      <div className="text-red-500 text-[10px]">{errMsg}</div>
     </Wrapper>
   );
 }

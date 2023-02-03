@@ -93,7 +93,7 @@ const Calculator = () => {
             {/* purchase price */}
             <SliderComp
               min={1000}
-              max={3000000}
+              max={2500000}
               step={500}
               name={PURCHASE_PRICE}
               initial={purchasePrice}
