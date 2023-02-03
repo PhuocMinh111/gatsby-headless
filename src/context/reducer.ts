@@ -7,7 +7,6 @@ import {
   SET_VALUE,
   TOGGLE_COLOR_MODE
 } from "./actions";
-import type { ReducerAction } from "react";
 
 //app state
 export interface AppState {
@@ -28,7 +27,10 @@ export interface AppState {
 // persist return
 
 const setItem = (state: AppState) => {
-  localStorage.setItem(APP_STATE, JSON.stringify(state));
+  if (typeof window !== undefined) {
+    localStorage.setItem(APP_STATE, JSON.stringify(state));
+  }
+  return;
 };
 
 const reducer = (
