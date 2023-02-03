@@ -34,7 +34,9 @@ const Calculator = () => {
     fetchCat();
   };
   const fetchCat = async () => {
-    fetch("https://api.thecatapi.com/v1/images/search")
+    fetch(
+      "https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif"
+    )
       .then(res => res.json())
       .then(data => setCat(data[0].url))
       .catch(err => {});
@@ -163,8 +165,8 @@ const Calculator = () => {
                 transition={{ duration: 1, delay: 0.5 }}
                 animate={{ opacity: 1, rotate: 0 }}
                 src={catUrl}
-                alt=""
-                className="max-w-[500px] h-[400px] object-cover"
+                alt="cat"
+                className="w-[95%] h-[400px] object-cover"
               />
             ) : (
               <CircularProgress />
@@ -174,7 +176,7 @@ const Calculator = () => {
             onClick={moreCat}
             className="py-3 cursor-pointer px-5 text-light bg-orange"
           >
-            More cat!
+            More cats !
           </div>
         </div>
       </AnimatePresence>
@@ -182,5 +184,4 @@ const Calculator = () => {
   );
 };
 
-export function toCalculator() {}
 export default Calculator;

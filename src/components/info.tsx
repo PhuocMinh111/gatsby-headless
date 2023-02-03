@@ -49,7 +49,7 @@ const Info = () => {
   return (
     <div
       id="info"
-      className="w-full overflow-hidden mt-0 py-5 pb-20 bg-grey text-center"
+      className="w-full overflow-hidden mt-0 py-[3rem] pb-20 bg-grey text-center"
     >
       {/* title */}
       <motion.h2

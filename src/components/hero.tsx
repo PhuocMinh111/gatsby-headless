@@ -22,11 +22,10 @@ function Hero() {
       }
     }
   `);
-  console.log(data);
   const { desc, images, name, tittle } = data.allContentfulHero.nodes[0];
 
   return (
-    <div className="w-full overflow-hidden bg-dark py-5 sm:pt-5 sm:pb-0 bg-black flex flex-col mt-0 sm:flex-row-reverse ">
+    <div className="w-full overflow-hidden bg-dark py-5 pb-10 sm:pt-5 sm:pb-0 bg-black flex flex-col mt-0 sm:flex-row-reverse ">
       {/* banner */}
 
       <motion.div

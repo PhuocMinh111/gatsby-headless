@@ -33,16 +33,20 @@ const base: IProps = {
 
 function SliderComp({ ...props }: IProps) {
   const { error, errorMsg, setValue, loanAmount } = UseContext();
-  const [value, setValueState] = useState<number | undefined>(0);
+  const [value, setValueState] = useState<number | number[] | undefined>(0);
   const [guard, setGuard] = useState(true);
   const [errMsg, setMsg] = useState("");
   //exceed down payment
 
-  function onChange(e: any) {
-    setValueState(e.target.value);
-    setValue(props.name, value);
+  function onChange(e: Event, newValue: number | number[]) {
+    if (typeof newValue === "number") {
+      setValueState(newValue);
+      setValue(props.name, newValue);
+    }
   }
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setValueState(props.initial);
+  }, [props.initial]);
 
   return (
     <Wrapper className="flex min-w-[250px] flex-col">

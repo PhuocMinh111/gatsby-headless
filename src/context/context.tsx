@@ -36,7 +36,8 @@ const defaultValue: AppState = {
   repayPerMonth: 0,
   toggleLightMode: () => {},
   calCulatePrice: () => {},
-  setValue: () => {}
+  setValue: () => {},
+  setErr: () => {}
 };
 
 //create context
