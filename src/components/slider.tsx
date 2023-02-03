@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "@mui/material/Slider";
 import styled from "@emotion/styled";
 import { theme } from "../theme/theme";
@@ -6,8 +6,10 @@ import {
   DOWN_PAYMENT,
   INTEREST,
   PURCHASE_PRICE,
-  REPAY_TIME
+  REPAY_TIME,
+  SET_VALUE
 } from "../context/actions";
+import { UseContext } from "../context/context";
 interface IProps {
   title: string;
   default?: number;
@@ -28,10 +30,27 @@ const base: IProps = {
 };
 
 function SliderComp({ ...props }: IProps) {
-  const [value, setValue] = useState<number>(0);
+  const { error, errorMsg, setValue, loanAmount } = UseContext();
+  const [value, setValueState] = useState<number>(0);
+  const [errMsg, setMsg] = useState("");
+  //exceed down payment
+
   function onChange(e: any) {
-    setValue(e.target.value);
+    setValueState(e.target.value);
+    setValue(props.name, value);
   }
+  useEffect(() => {
+    if (error && props.name === DOWN_PAYMENT) {
+      setMsg("you cant set down payment larger than purchase price");
+
+      setValueState(0);
+      setValue(DOWN_PAYMENT, value);
+    } else {
+      setTimeout(() => {
+        setMsg("");
+      }, 1000);
+    }
+  }, [error]);
   return (
     <Wrapper className="flex min-w-[250px] flex-col">
       <div className="div mt-3 text-[18px] font-[700]">
@@ -44,12 +63,13 @@ function SliderComp({ ...props }: IProps) {
           }`}
       </div>
       <Slider
-        value={value}
+        value={error && props.name === DOWN_PAYMENT ? 0 : value}
         min={props.min}
         step={props.step}
         max={props.max}
         onChange={onChange}
       ></Slider>
+      <div className="text-red-500 text-[10px]"></div>
     </Wrapper>
   );
 }

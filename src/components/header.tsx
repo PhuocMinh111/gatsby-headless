@@ -4,7 +4,8 @@ import { BsGithub } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 import { BiMenu } from "react-icons/bi";
 import { theme } from "../theme/theme";
-import Logo from "./Logo";
+import Logo from "./logo";
+
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -15,8 +16,8 @@ function Header() {
         <Logo />
         {/* Md Menu */}
         <div className="text-gray-300 cursor-point font-[32px] hidden sm:flex justify-center gap-10 menu">
-          <Button content="Calculator" />
-          <Button content="Service" />
+          <Button scrollTo="calculator" content="Calculator" />
+          <Button scrollTo="info" content="Service" />
         </div>
         {/*  */}
 
@@ -55,10 +56,12 @@ const AnimatedMenu = () => {
     items-start absolute top-[100px] right-[5px]"
     >
       <Button
+        scrollTo="calculator"
         style={{ backgroundColor: "light", color: "black" }}
         content="Calculator"
       ></Button>
       <Button
+        scrollTo="info"
         style={{ backgroundColor: "light", color: "black" }}
         content="Service"
       ></Button>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 
 // cards component
@@ -24,7 +24,7 @@ function Card({
 
 // info component
 
-function Info() {
+const Info = () => {
   const data = useStaticQuery(graphql`
     query infoQuery {
       allContentfulInfo {
@@ -43,9 +43,10 @@ function Info() {
       }
     }
   `);
+
   const { cards, tittle, image } = data.allContentfulInfo.nodes[0];
   return (
-    <div className="w-full mt-0 py-5 pb-20 bg-grey text-center">
+    <div id="info" className="w-full mt-0 py-5 pb-20 bg-grey text-center">
       {/* title */}
       <h2 className="text-[50px] mx-auto max-w-[500px] px-3 leading-[70px] font-bold text-dark">
         {tittle}
@@ -65,6 +66,6 @@ function Info() {
       </div>
     </div>
   );
-}
+};
 
 export default Info;

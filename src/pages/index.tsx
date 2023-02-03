@@ -7,6 +7,7 @@ import Hero from "../components/hero";
 import Info from "../components/info";
 import SliderComp from "../components/slider";
 import Calculator from "../components/calculator";
+import { info } from "console";
 const IndexPage = () => {
   return (
     <Layout>

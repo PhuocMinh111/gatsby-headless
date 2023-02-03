@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Button from "./button";
 import { theme } from "../theme/theme";
 import SliderComp from "./slider";
@@ -8,10 +8,15 @@ import {
   PURCHASE_PRICE,
   REPAY_TIME
 } from "../context/actions";
+import { UseContext } from "../context/context";
 
-function Calculator() {
+const Calculator = () => {
+  const { loanAmount, purchasePrice, repayPerMonth } = UseContext();
   return (
-    <div className="flex flex-col gap-5 sm:gap-8 sm:flex-row-reverse w-100 mt-5 px-3 sm:px-5 py-5 sm:pb-20">
+    <div
+      id="calculator"
+      className="flex flex-col gap-5 sm:gap-8 sm:flex-row-reverse w-100 mt-5 px-3 sm:px-5 py-5 sm:pb-20"
+    >
       {/* intro */}
       <div className="flex flex-col sm:w-1/2 py-3 text-left">
         <div className="text-[55px] max-w-[500px] font-[800] leading-[80px] ">
@@ -46,8 +51,8 @@ function Calculator() {
           {/* purchase price */}
           <SliderComp
             min={1000}
-            max={1000000}
-            step={100}
+            max={3000000}
+            step={500}
             name={PURCHASE_PRICE}
             title="Purchase Price"
           />
@@ -55,8 +60,8 @@ function Calculator() {
           <SliderComp
             name={DOWN_PAYMENT}
             min={1000}
-            max={1000000}
-            step={100}
+            max={2000000}
+            step={500}
             title="Down Payment"
           />
           {/* repay time */}
@@ -78,16 +83,29 @@ function Calculator() {
         </div>
         <div className="result font-[700] text-[40] flex flex-col gap-0">
           <div>
-            Loan Amount <span className="text-[40px] text-orange">{}</span>
+            Loan Amount:{" "}
+            <span className="text-[40px] text-orange">
+              {new Intl.NumberFormat("en-EN", {
+                style: "currency",
+                currency: "USD"
+              }).format(loanAmount)}
+            </span>
           </div>
           <div>
             Estimated repayment per month:
-            <span className="text-[40px] text-orange">{}</span>
+            <span className="text-[40px] text-orange">
+              {repayPerMonth > 0 &&
+                new Intl.NumberFormat("en-EN", {
+                  style: "currency",
+                  currency: "USD"
+                }).format(repayPerMonth)}
+            </span>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
+export function toCalculator() {}
 export default Calculator;
