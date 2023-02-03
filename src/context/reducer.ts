@@ -82,8 +82,6 @@ function stateHandler(state: AppState, name: string, value: number): AppState {
   const temp = { ...state };
   switch (name) {
     case PURCHASE_PRICE:
-      console.log("purchase");
-
       return { ...state, purchasePrice: value };
     case DOWN_PAYMENT:
       return { ...state, downPayMent: value };
