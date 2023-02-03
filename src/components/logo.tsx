@@ -20,7 +20,7 @@ function Logo({
         K
       </div>
       <div className="inline max-w-[50px]">
-        Kinka <br /> Fiance
+        Kinka <br /> Finance
       </div>
     </div>
   );

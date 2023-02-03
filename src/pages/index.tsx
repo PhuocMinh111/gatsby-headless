@@ -19,4 +19,4 @@ const IndexPage = () => {
 };
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>KinKa Fiance</title>;
+export const Head: HeadFC = () => <title>KinKa Finance</title>;
