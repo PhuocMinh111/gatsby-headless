@@ -1,6 +1,6 @@
 import React from "react";
 import AccordionComp from "./accordion";
-import Logo from "./Logo";
+import Logo from "./logo";
 import { ImFacebook, ImInstagram, ImTwitter } from "react-icons/im";
 //content array
 

@@ -4,13 +4,18 @@ import type { ReducerAction } from "react";
 //app state
 export interface AppState {
   lightMode: boolean;
+  purchasePrice: number;
+  downPayMent: number;
+  repayTime: number;
+  interest: number;
   toggleLightMode: () => void;
+  calCulatePrice: () => void;
 }
 //
 
 const reducer = (
   state: AppState,
-  action: { type: String; payload?: any }
+  action: { type: string; payload?: any }
 ): AppState => {
   switch (action.type) {
     //light mode

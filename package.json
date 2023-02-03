@@ -16,7 +16,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@material-tailwind/react": "^1.2.5",
+    "@mui/material": "^5.11.7",
     "framer-motion": "^8.5.5",
     "gatsby": "^5.5.0",
     "gatsby-plugin-image": "^3.5.0",

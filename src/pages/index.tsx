@@ -5,11 +5,13 @@ import { ThemeProvider } from "@material-tailwind/react";
 import Layout from "../layout/layout";
 import Hero from "../components/hero";
 import Info from "../components/info";
+import SliderComp from "../components/slider";
 const IndexPage = () => {
   return (
     <Layout>
       <Hero />
       <Info />
+      <SliderComp />
     </Layout>
   );
 };
