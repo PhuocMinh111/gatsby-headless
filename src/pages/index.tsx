@@ -8,12 +8,14 @@ import Info from "../components/info";
 import SliderComp from "../components/slider";
 import Calculator from "../components/calculator";
 import { info } from "console";
+import Cat from "../components/cat";
 const IndexPage = () => {
   return (
     <Layout>
       <Hero />
       <Info />
       <Calculator />
+      <Cat />
     </Layout>
   );
 };

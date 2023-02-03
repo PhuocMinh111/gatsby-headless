@@ -21,26 +21,10 @@ const Calculator = () => {
     purchasePrice,
     repayPerMonth
   } = UseContext();
-  const [catUrl, setCat] = useState("");
+
   // cat ref
   const catRef = useRef(null);
 
-  useEffect(() => {
-    fetchCat();
-  }, []);
-
-  const moreCat = () => {
-    setCat("");
-    fetchCat();
-  };
-  const fetchCat = async () => {
-    fetch(
-      "https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif"
-    )
-      .then(res => res.json())
-      .then(data => setCat(data[0].url))
-      .catch(err => {});
-  };
   const checkDelay = (ref: any) => {
     if (ref.current.naturalHeight === 0) return 0.5;
     return 0.2;
@@ -152,34 +136,6 @@ const Calculator = () => {
           </div>
         </motion.div>
       </div>
-      <AnimatePresence exitBeforeEnter initial={false}>
-        <div
-          id="cat"
-          className="w-100 mt-5 h-[500px] flex flex-col gap-5 items-center"
-        >
-          <div className="h-[400px]">
-            {catUrl.length > 2 ? (
-              <motion.img
-                ref={catRef}
-                initial={{ opacity: 0, rotate: 720 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                src={catUrl}
-                alt="cat"
-                className="w-[95%] h-[400px] object-cover"
-              />
-            ) : (
-              <CircularProgress />
-            )}
-          </div>
-          <div
-            onClick={moreCat}
-            className="py-3 cursor-pointer px-5 text-light bg-orange"
-          >
-            More cats !
-          </div>
-        </div>
-      </AnimatePresence>
     </div>
   );
 };
