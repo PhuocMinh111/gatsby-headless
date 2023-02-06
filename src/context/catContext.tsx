@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useState } from "react";
+const step = 3;
+const base = 120;
 
 const defaultValue = {
-  speed: 180,
+  speed: base,
 
   increaseSpeed: () => {},
   decreaseSpeed: () => {}
 };
-const step = 3;
 
 const CatContext = createContext(defaultValue);
 
@@ -20,7 +21,7 @@ function CatProvider({ children }: any) {
     },
     decreaseSpeed: () => {
       setSpeed(prev => {
-        return prev - step < 180 ? 180 : prev - step;
+        return prev - step < base ? base : prev - step;
       });
     }
   };

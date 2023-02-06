@@ -10,12 +10,10 @@ import { useCatContext } from "../context/catContext";
 
 const RunningCat = ({ onFinish, onClick, w, h }: any) => {
   const variants = calculateMove(w, h);
+
   const { speed } = useCatContext();
 
   let finalSpeed = speed;
-  if (w < 400 || h < 400) {
-    finalSpeed = (finalSpeed * 2) / 3;
-  }
 
   //--- speed-----
   const time = w / finalSpeed;
