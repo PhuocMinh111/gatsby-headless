@@ -19,7 +19,6 @@ export const calculateMove = (w: number, h: number): any => {
   const ceilX = w / 2;
   const ceilY = h / 2;
   // let x:number=0,y:number=0,rotateYdeg:number=0,rotateXdeg:number=0;
-  const deg = [90, 0, -45, -125, -90];
 
   const rotateY = Math.floor(Math.random() * 10) % 2 === 0 ? true : false;
 
@@ -27,8 +26,9 @@ export const calculateMove = (w: number, h: number): any => {
   // set front to end;
 
   //------rotation
-  const ranDeg = [0, 45, -90, 90, 45];
+  const ranDeg = [0, 0, 45, -90, 90, 45, 45, -45];
   const finalDeg = randomFromArr(ranDeg);
+  console.log(finalDeg);
 
   base.rotate = finalDeg;
   final.rotate = finalDeg;
@@ -52,6 +52,8 @@ export const calculateMove = (w: number, h: number): any => {
     let fixed = randomFromRange(-ceilY, ceilY);
     base.y = fixed;
     final.y = fixed;
+    base.x = -ceilX;
+    final.x = ceilX;
   } else if (finalDeg === 90) {
     base.x = randomFromRange(-(w - step), w - step);
     final.x = base.x;

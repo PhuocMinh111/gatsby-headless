@@ -16,7 +16,6 @@ const RunningCat = ({ onFinish, onClick, w, h }: any) => {
   if (w < 400 || h < 400) {
     finalSpeed = (finalSpeed * 2) / 3;
   }
-  console.log(finalSpeed);
 
   //--- speed-----
   const time = w / finalSpeed;
