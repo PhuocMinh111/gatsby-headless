@@ -55,7 +55,7 @@ function Cat() {
         </div>
         <div
           onClick={moreCat}
-          className="py-3 z-[100] cursor-pointer px-5 text-light bg-orange"
+          className="py-3 rounded-sm z-[100] cursor-pointer px-5 text-light bg-orange"
         >
           More cats !
         </div>

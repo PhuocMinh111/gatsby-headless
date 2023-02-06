@@ -34,7 +34,7 @@ function Button({
     <div
       style={style}
       onClick={handleClick}
-      className={` flex cursor-pointer items-center justify-center hover:underline bg-black text-gray-200 ${style} `}
+      className={`rounded-sm flex cursor-pointer items-center justify-center hover:underline bg-black text-gray-200 ${style} `}
     >
       {content}
       {logo}

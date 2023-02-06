@@ -33,7 +33,7 @@ const RunningCat = ({ onFinish, onClick, w, h }: any) => {
       onAnimationComplete={onFinish}
       id="running-cat-rail"
       className="relative top-1/2  left-1/2 rot origin-center
--translate-x-1/2 -translate-y-1/2 z-[1000]  h-[50px] w-[100px]
+-translate-x-1/2 -translate-y-1/2 z-[1000]  h-[100px] w-[150px]
 "
     >
       {/* runningCat */}
