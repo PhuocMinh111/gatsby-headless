@@ -14,6 +14,7 @@ export interface AppState {
   purchasePrice: number;
   downPayMent: number;
   repayTime: number;
+  catSpeed: number;
   interest: number;
   error?: boolean;
   errorMsg?: string;

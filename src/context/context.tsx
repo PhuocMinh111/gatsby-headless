@@ -30,6 +30,7 @@ const defaultValue: AppState = {
   lightMode: true,
   purchasePrice: 0,
   repayTime: 0,
+  catSpeed: 200,
   interest: 0.1,
   downPayMent: 0,
   loanAmount: 0,

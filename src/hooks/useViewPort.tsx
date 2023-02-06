@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const useViewPort = () => {
-  const [viewPort, setViewPort] = useState({ w: 0, h: 0 });
+  const [viewPort, setViewPort] = useState({ vw: 0, vh: 0 });
   useEffect(() => {
     if (typeof window !== undefined) {
       const vw = Math.max(
@@ -12,7 +12,7 @@ const useViewPort = () => {
         document.documentElement.clientHeight || 0,
         window.innerHeight || 0
       );
-      setViewPort({ w: vw, h: vh });
+      setViewPort({ vw: vw, vh: vh });
     }
   }, []);
   return viewPort;

@@ -7,14 +7,26 @@ import RunningCatContainer from "./running-cat-container";
 function Cat() {
   const [catUrl, setCat] = useState("");
 
+  const [caught, setCaught] = useState(0);
   useEffect(() => {
     fetchCat();
   }, []);
-
+  // caught function
+  const onCaught = () => {
+    setCaught(prev => prev + 1);
+  };
+  const onLost = () => {
+    setCaught(prev => {
+      if (prev === 0) return 0;
+      return prev - 1;
+    });
+  };
+  //fetch cat
   const moreCat = () => {
     setCat("");
     fetchCat();
   };
+
   const fetchCat = async () => {
     fetch("https://api.thecatapi.com/v1/images/search?size=small")
       .then(res => res.json())
@@ -25,7 +37,7 @@ function Cat() {
     <AnimatePresence exitBeforeEnter initial={false}>
       <div
         id="cat"
-        className="w-100 mt-5 relative h-[500px] flex flex-col gap-5 items-center"
+        className="w-100 mt-5 py-20 mb-10 relative h-auto flex flex-col gap-5 items-center"
       >
         <div className="h-[400px]">
           {catUrl.length > 2 ? (
@@ -43,11 +55,14 @@ function Cat() {
         </div>
         <div
           onClick={moreCat}
-          className="py-3 cursor-pointer px-5 text-light bg-orange"
+          className="py-3 z-[100] cursor-pointer px-5 text-light bg-orange"
         >
           More cats !
         </div>
-        <RunningCatContainer />
+        <RunningCatContainer onLost={onLost} onCaught={onCaught} />
+        <div id="cat-point" className="absolute top-[5px] right-[5px] text-2xl">
+          {caught} Cats caught !
+        </div>
       </div>
     </AnimatePresence>
   );

@@ -6,14 +6,20 @@ import nyan from "../images/nyan.gif";
 
 import useViewPort from "../hooks/useViewPort";
 import { flip } from "../utils/utils";
+import useSizeDiv from "../hooks/useSizeDiv";
+import { useCatContext } from "../context/catContext";
 
-const RunningCatContainer = () => {
-  const railRef = useRef(null);
+const RunningCatContainer = ({ onCaught, onLost }: any) => {
   const containerRef = useRef(null);
+  const { w, h } = useSizeDiv(containerRef);
 
   // respawn
   const [spawn, setSpawn] = useState(true);
+  const { increaseSpeed, decreaseSpeed } = useCatContext();
+  // on Animation finish
   const onFinish = () => {
+    onLost();
+    decreaseSpeed();
     setSpawn(false);
     setTimeout(() => {
       setSpawn(true);
@@ -21,7 +27,12 @@ const RunningCatContainer = () => {
   };
   //--------
   const isFlip = Math.floor(Math.random() * 10) % 2 === 0;
+
+  //----capture cat-----
+
   function capture() {
+    onCaught();
+    increaseSpeed();
     setSpawn(false);
     setTimeout(() => {
       setSpawn(true);
@@ -33,10 +44,12 @@ const RunningCatContainer = () => {
       ref={containerRef}
       style={{ transform: `rotateY(${isFlip ? "180deg" : "0deg"})` }}
       className="bg-transparent
-    absolute z-[900] top-0 left-0 w-full h-full 
+    absolute z-[90] top-0 left-0 w-full h-full 
     "
     >
-      {spawn && <RunningCat onClick={capture} onFinish={onFinish} />}
+      {spawn && (
+        <RunningCat w={w} h={h} onClick={capture} onFinish={onFinish} />
+      )}
     </div>
   );
 };

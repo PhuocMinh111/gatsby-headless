@@ -1,7 +1,19 @@
 /* tailwind imports */
+
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#cat-point {
+  font-family: "VT323", monospace;
+  font-size: 30px;
+  font-weight: 800;
+  color: transparent;
+  background-image: url(../images/giphy.gif);
+  background-position: center;
+  -webkit-background-clip: text;
+}
 
 body {
   @apply tracking-wide overflow-x-hidden;
