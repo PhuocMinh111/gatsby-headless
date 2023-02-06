@@ -11,12 +11,15 @@ import { useCatContext } from "../context/catContext";
 const RunningCat = ({ onFinish, onClick, w, h }: any) => {
   const variants = calculateMove(w, h);
   const { speed } = useCatContext();
-  console.log(speed);
-  const { vw, vh } = useViewPort();
-  console.log(vw, vh);
+
+  let finalSpeed = speed;
+  if (w < 400 || h < 400) {
+    finalSpeed = (finalSpeed * 2) / 3;
+  }
+  console.log(finalSpeed);
 
   //--- speed-----
-  const time = w / speed;
+  const time = w / finalSpeed;
 
   //---------
 
@@ -25,7 +28,7 @@ const RunningCat = ({ onFinish, onClick, w, h }: any) => {
       initial={"begin"}
       animate={"end"}
       onClick={onClick}
-      transition={{ duration: time, type: "normal" }}
+      transition={{ duration: time, type: "easeOut" }}
       variants={variants}
       onAnimationComplete={onFinish}
       id="running-cat-rail"
@@ -36,11 +39,9 @@ const RunningCat = ({ onFinish, onClick, w, h }: any) => {
       {/* runningCat */}
       <div>
         <img
-          className="bg-size z-[1000] object-cover"
+          className="bg-size w-[70px] h-[50px] sm:w-[100px] sm:h-[70px] rounded-md z-[1000] object-cover"
           alt="running cat"
           src={nyan}
-          width={100}
-          height={50}
         />
       </div>
     </motion.div>

@@ -43,12 +43,17 @@ const RunningCatContainer = ({ onCaught, onLost }: any) => {
     <div
       ref={containerRef}
       style={{ transform: `rotateY(${isFlip ? "180deg" : "0deg"})` }}
-      className="bg-transparent
+      className="bg-transparent overflow-hidden
     absolute z-[90] top-0 left-0 w-full h-full 
     "
     >
       {spawn && (
-        <RunningCat w={w} h={h} onClick={capture} onFinish={onFinish} />
+        <RunningCat
+          w={w - 10}
+          h={h - 20}
+          onClick={capture}
+          onFinish={onFinish}
+        />
       )}
     </div>
   );

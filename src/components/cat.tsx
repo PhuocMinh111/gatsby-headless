@@ -37,7 +37,7 @@ function Cat() {
     <AnimatePresence exitBeforeEnter initial={false}>
       <div
         id="cat"
-        className="w-100 mt-5 py-20 mb-10 relative h-auto flex flex-col gap-5 items-center"
+        className="w-100 overflow-hidden mt-5 py-20 mb-10 relative h-auto flex flex-col gap-5 items-center"
       >
         <div className="h-[400px]">
           {catUrl.length > 2 ? (
@@ -47,7 +47,7 @@ function Cat() {
               animate={{ opacity: 1, rotate: 0 }}
               src={catUrl}
               alt="cat"
-              className="w-[95%] h-[400px] object-cover"
+              className="max-w-[95%] h-[400px] object-cover"
             />
           ) : (
             <CircularProgress />
@@ -60,7 +60,10 @@ function Cat() {
           More cats !
         </div>
         <RunningCatContainer onLost={onLost} onCaught={onCaught} />
-        <div id="cat-point" className="absolute top-[5px] right-[5px] text-2xl">
+        <div
+          id="cat-point"
+          className="absolute top-[5px] right-[15px] sm:right-[30px] text-2xl"
+        >
           {caught} Cats caught !
         </div>
       </div>
