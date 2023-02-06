@@ -1,6 +1,8 @@
 import { CircularProgress } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import RunningCat from "./running-cat";
+import RunningCatContainer from "./running-cat-container";
 
 function Cat() {
   const [catUrl, setCat] = useState("");
@@ -23,7 +25,7 @@ function Cat() {
     <AnimatePresence exitBeforeEnter initial={false}>
       <div
         id="cat"
-        className="w-100 mt-5 h-[500px] flex flex-col gap-5 items-center"
+        className="w-100 mt-5 relative h-[500px] flex flex-col gap-5 items-center"
       >
         <div className="h-[400px]">
           {catUrl.length > 2 ? (
@@ -45,6 +47,7 @@ function Cat() {
         >
           More cats !
         </div>
+        <RunningCatContainer />
       </div>
     </AnimatePresence>
   );
