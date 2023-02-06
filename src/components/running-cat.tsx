@@ -28,22 +28,21 @@ const RunningCat = ({ onFinish, onClick, w, h }: any) => {
       initial={"begin"}
       animate={"end"}
       onClick={onClick}
-      transition={{ duration: time, type: "easeOut" }}
+      transition={{ duration: time, type: "easeInOut" }}
       variants={variants}
       onAnimationComplete={onFinish}
       id="running-cat-rail"
       className="relative top-1/2  left-1/2 rot origin-center
--translate-x-1/2 -translate-y-1/2 z-[1000]  h-[100px] w-[150px]
+-translate-x-1/2 -translate-y-1/2  flex items-center justify-center z-[1000]  h-[120px] w-[120px] rounded-full
 "
     >
       {/* runningCat */}
-      <div>
-        <img
-          className="bg-size w-[70px] h-[50px] sm:w-[100px] sm:h-[70px] rounded-md z-[1000] object-cover"
-          alt="running cat"
-          src={nyan}
-        />
-      </div>
+
+      <img
+        className="bg-size w-[70px] h-[50px] sm:w-[100px] sm:h-[70px] rounded-md z-[1000] object-cover"
+        alt="running cat"
+        src={nyan}
+      />
     </motion.div>
   );
 };

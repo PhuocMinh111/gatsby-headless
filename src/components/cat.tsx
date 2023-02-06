@@ -47,7 +47,7 @@ function Cat() {
               animate={{ opacity: 1, rotate: 0 }}
               src={catUrl}
               alt="cat"
-              className="max-w-[95%] h-[400px] object-cover"
+              className="max-w-[95%] mx-auto h-[400px] object-cover"
             />
           ) : (
             <CircularProgress />

@@ -49,8 +49,8 @@ const RunningCatContainer = ({ onCaught, onLost }: any) => {
     >
       {spawn && (
         <RunningCat
-          w={w - 10}
-          h={h - 20}
+          w={w + 10}
+          h={h + 10}
           onClick={capture}
           onFinish={onFinish}
         />
